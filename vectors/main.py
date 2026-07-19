@@ -16,6 +16,7 @@ def multiply_by_scalar(vector, scalar):
         result.append(vector[i] * scalar)
     return result
 
+
 def dot_product(a, b):
     if len(a) != len(b):
         raise ValueError("Lengths of arrays are not equal")
@@ -24,14 +25,17 @@ def dot_product(a, b):
         result += a[i] * b[i]
     return result
 
+
 def neuron_output(features, weights, bias):
     return dot_product(features, weights) + bias
+
 
 def matrix_vector_product(matrix, vector):
     result = []
     for row in matrix:
         result.append(dot_product(row, vector))
     return result
+
 
 def dense_layer_output(features, weights, biases):
     return add_vectors(matrix_vector_product(weights, features), biases)

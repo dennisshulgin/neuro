@@ -1,4 +1,11 @@
-from main import *
+from main import (
+    add_vectors,
+    dense_layer_output,
+    dot_product,
+    matrix_vector_product,
+    multiply_by_scalar,
+    neuron_output,
+)
 
 assert add_vectors([1, 2, 3], [4, 5, 6]) == [5, 7, 9]
 assert add_vectors([-1, 5], [1, 10]) == [0, 15]
