@@ -3,8 +3,11 @@ from main import (
     dense_layer_output,
     dot_product,
     matrix_vector_product,
+    mean,
     multiply_by_scalar,
     neuron_output,
+    variance,
+    standard_deviation,
 )
 
 assert add_vectors([1, 2, 3], [4, 5, 6]) == [5, 7, 9]
@@ -85,3 +88,30 @@ except ValueError:
     pass
 
 print("Все проверки третьего дня пройдены")
+
+assert mean([2, 4, 6]) == 4
+assert mean([1, 2, 3, 4]) == 2.5
+assert mean([-10, 10]) == 0
+
+assert variance([1, 2, 3, 4]) == 1.25
+assert variance([5, 5, 5]) == 0
+
+assert abs(
+    standard_deviation([1, 2, 3, 4]) - 1.118033988749895
+) < 0.000000001
+
+assert standard_deviation([5, 5, 5]) == 0
+
+try:
+    mean([])
+    assert False, "Ожидался ValueError"
+except ValueError:
+    pass
+
+try:
+    variance([])
+    assert False, "Ожидался ValueError"
+except ValueError:
+    pass
+
+print("Все проверки четвёртого дня пройдены")
