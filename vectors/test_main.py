@@ -1,8 +1,4 @@
-from main import add_vectors
-from main import multiply_by_scalar
-from main import dot_product
-from main import neuron_output
-
+from main import *
 
 assert add_vectors([1, 2, 3], [4, 5, 6]) == [5, 7, 9]
 assert add_vectors([-1, 5], [1, 10]) == [0, 15]
@@ -32,3 +28,53 @@ except ValueError:
     pass
 
 print("Все проверки второго дня пройдены")
+
+assert matrix_vector_product(
+    [
+        [1, 2, 3],
+        [4, 5, 6],
+    ],
+    [10, 20, 30],
+) == [140, 320]
+
+assert matrix_vector_product(
+    [
+        [1, 0],
+        [0, 1],
+    ],
+    [7, 9],
+) == [7, 9]
+
+assert dense_layer_output(
+    [2, 4],
+    [
+        [1.0, 2.0],
+        [-1.0, 3.0],
+        [0.5, 0.5],
+    ],
+    [0, 1, -1],
+) == [10, 11, 2]
+
+try:
+    matrix_vector_product(
+        [[1, 2, 3]],
+        [1, 2],
+    )
+    assert False, "Ожидался ValueError"
+except ValueError:
+    pass
+
+try:
+    dense_layer_output(
+        [1, 2],
+        [
+            [1, 0],
+            [0, 1],
+        ],
+        [0],
+    )
+    assert False, "Ожидался ValueError"
+except ValueError:
+    pass
+
+print("Все проверки третьего дня пройдены")

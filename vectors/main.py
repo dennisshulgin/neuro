@@ -26,3 +26,12 @@ def dot_product(a, b):
 
 def neuron_output(features, weights, bias):
     return dot_product(features, weights) + bias
+
+def matrix_vector_product(matrix, vector):
+    result = []
+    for row in matrix:
+        result.append(dot_product(row, vector))
+    return result
+
+def dense_layer_output(features, weights, biases):
+    return add_vectors(matrix_vector_product(weights, features), biases)
