@@ -1,4 +1,3 @@
-from math import exp
 from matplotlib import pyplot as plt
 
 
