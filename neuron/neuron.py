@@ -30,7 +30,7 @@ def evaluate_neuron(
     по prediction.
     """
     if len(features) != len(weights):
-        return ValueError("Arrays lenths are not equal")
+        raise ValueError("Arrays lenths are not equal")
 
     prediction = 0
 
