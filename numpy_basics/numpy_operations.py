@@ -50,4 +50,12 @@ def dense_layer_output(
     b = np.array(features)
     c = np.array(biases)
 
+    if a.shape[1] != b.shape[0]: 
+        raise ValueError("Arrays are not equal")
+
+    s = a @ b
+
+    if s.shape != c.shape: 
+        raise ValueError("Arrays are not equal")
+
     return a @ b + c
