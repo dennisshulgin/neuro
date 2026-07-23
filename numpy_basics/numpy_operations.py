@@ -50,12 +50,13 @@ def dense_layer_output(
     b = np.array(features)
     c = np.array(biases)
 
-    if a.shape[1] != b.shape[0]: 
-        raise ValueError("Arrays are not equal")
+    if a.ndim != 2:
+        raise ValueError("weights must be two-dimensional")
 
-    s = a @ b
+    if b.ndim != 1:
+        raise ValueError("features must be one-dimensional")
 
-    if s.shape != c.shape: 
-        raise ValueError("Arrays are not equal")
+    if c.ndim != 1:
+        raise ValueError("biases must be one-dimensional")
 
     return a @ b + c
