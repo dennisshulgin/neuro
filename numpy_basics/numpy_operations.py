@@ -59,4 +59,10 @@ def dense_layer_output(
     if c.ndim != 1:
         raise ValueError("biases must be one-dimensional")
 
+    if a.shape[1] != b.shape[0]:
+        raise ValueError("weights and features have incompatible shapes")
+
+    if a.shape[0] != c.shape[0]:
+        raise ValueError("weights and biases have incompatible shapes")
+
     return a @ b + c
