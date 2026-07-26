@@ -9,19 +9,23 @@ def linear_scores(
     """
     Возвращает score для каждого объекта.
     """
-    if features.ndim != 2:
+
+    features_array = np.asarray(features)
+    weights_array = np.asarray(weights)
+
+    if features_array.ndim != 2:
         raise ValueError("Features must have 2 dim")
 
-    if weights.ndim != 1:
+    if weights_array.ndim != 1:
         raise ValueError("Weights must have 1 dim")
 
-    if features.shape[1] != weights.shape[0]:
+    if features_array.shape[1] != weights_array.shape[0]:
         raise ValueError("Invalid arrays")
 
     if np.asarray(bias).ndim != 0:
         raise ValueError("bias must be a scalar")
 
-    return features @ weights + bias
+    return features_array @ weights_array + bias
 
 
 def predict_classes(
@@ -55,5 +59,5 @@ def accuracy(
     if predictions_array.shape != targets_array.shape:
         raise ValueError("predictions and targets must have equal shapes")
 
-    matches = predictions == targets
+    matches = predictions_array == targets_array
     return matches.mean()
