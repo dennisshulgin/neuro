@@ -40,5 +40,17 @@ def accuracy(
     """
     Возвращает долю правильных предсказаний.
     """
+    predictions_array = np.asarray(predictions)
+    targets_array = np.asarray(targets)
+
+    if predictions_array.ndim != 1:
+        raise ValueError("predictions must be one-dimensional")
+
+    if targets_array.ndim != 1:
+        raise ValueError("targets must be one-dimensional")
+
+    if predictions_array.shape != targets_array.shape:
+        raise ValueError("predictions and targets must have equal shapes")
+
     matches = predictions == targets
     return matches.mean()
