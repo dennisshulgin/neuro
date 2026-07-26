@@ -18,6 +18,9 @@ def linear_scores(
     if features.shape[1] != weights.shape[0]:
         raise ValueError("Invalid arrays")
 
+    if np.asarray(bias).ndim != 0:
+        raise ValueError("bias must be a scalar")
+
     return features @ weights + bias
 
 
