@@ -16,7 +16,7 @@ def linear_scores(
         raise ValueError("Weights must have 1 dim")
 
     if features.shape[1] != weights.shape[0]:
-        raise
+        raise ValueError("Invalid arrays")
 
     return features @ weights + bias
 
