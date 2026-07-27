@@ -5,7 +5,9 @@ from models.linear_classifier import (
     accuracy,
     linear_scores,
     predict_classes,
+    predict_probabilities,
 )
+from models.activations import sigmoid
 
 
 features = np.array(
@@ -81,3 +83,22 @@ except ValueError:
     pass
 
 print("Все проверки десятого дня пройдены")
+
+assert np.isclose(sigmoid(0), 0.5)
+assert sigmoid(-2) < 0.5
+assert sigmoid(2) > 0.5
+
+values = np.array([-2, 0, 2])
+result = sigmoid(values)
+
+assert result.shape == (3,)
+assert np.all(result > 0)
+assert np.all(result < 1)
+
+probabilities = predict_probabilities(features, weights, bias)
+predictions = predict_classes(features, weights, bias)
+
+assert np.array_equal(
+    predictions,
+    (probabilities > 0.5).astype(int),
+)

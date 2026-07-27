@@ -1,5 +1,7 @@
 import numpy as np
 
+from models.activations import sigmoid
+
 
 def linear_scores(
     features,
@@ -61,3 +63,11 @@ def accuracy(
 
     matches = predictions_array == targets_array
     return matches.mean()
+
+def predict_probabilities(
+    features,
+    weights,
+    bias,
+):
+    scores = linear_scores(features, weights, bias)
+    return sigmoid(scores)
