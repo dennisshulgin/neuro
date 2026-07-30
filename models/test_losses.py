@@ -40,3 +40,11 @@ try:
 except ValueError:
     pass
 
+try:
+    loss = binary_cross_entropy(
+        np.array([1.9, 0.1]),
+        np.array([1, 0, 1]),
+    )
+    assert False, "Expected error"
+except ValueError:
+    pass

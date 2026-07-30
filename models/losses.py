@@ -18,6 +18,12 @@ def binary_cross_entropy(
     if probabilities_array.shape != targets_array.shape:
         raise ValueError("Invalid shapes")
 
+    if np.any((probabilities_array < 0) | (probabilities_array > 1)):
+        raise ValueError("Invalid values")
+
+    if np.any((targets_array != 1) & (targets_array != 0)):
+            raise ValueError("Invalid values")
+    
     epsilon = 1e-15  # Очень маленькое число (0.000000000000001)
     safe_probabilities = np.clip(
         probabilities_array,  # Исходные предсказания модели
@@ -25,16 +31,8 @@ def binary_cross_entropy(
         1 - epsilon,          # Максимальное значение (1 - эпсилон)
     )
 
-    result = 0
-    for i in range(0, len(safe_probabilities)):
-        if targets_array[i] not in (0, 1):
-            raise ValueError("Invalid target")
-        if safe_probabilities[i] < 0 or safe_probabilities[i] > 1:
-            raise ValueError("Invalid probability")
-
-        result += -(targets_array[i] * math.log(safe_probabilities[i]) + (1 - targets_array[i]) * math.log(1 - safe_probabilities[i]))
-
-    return result / len(safe_probabilities)
+    losses = -(targets_array * np.log(safe_probabilities) + (1 - targets_array) * np.log(1 - safe_probabilities))
+    return losses.mean()
 
 
     
