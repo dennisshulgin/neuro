@@ -23,7 +23,7 @@ def binary_cross_entropy(
     if np.any((targets_array != 1) & (targets_array != 0)):
             raise ValueError("Invalid values")
 
-    if len(probabilities_array) == 0 | len(targets_array) == 0:
+    if len(probabilities_array) == 0 or len(targets_array) == 0:
          raise ValueError("Array is empty")
     
     epsilon = 1e-15  # Очень маленькое число (0.000000000000001)
