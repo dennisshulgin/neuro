@@ -3,8 +3,6 @@ import numpy as np
 from datasets.linear_dataset import generate_linear_dataset
 from models.evaluation import evaluate_binary_classifier
 from models.training import train_binary_classifier
-from matplotlib import pyplot as plt
-
 
 features, targets = generate_linear_dataset(
     sample_count=500,
@@ -36,13 +34,3 @@ final_loss, final_accuracy = evaluate_binary_classifier(
 
 assert final_accuracy > 0.95
 assert final_loss < loss_history[0]
-
-print(weights)
-print(bias)
-
-plt.plot(loss_history)
-plt.xlabel("Epoch")
-plt.ylabel("Loss")
-plt.title("Training loss")
-plt.grid(True)
-plt.show()
