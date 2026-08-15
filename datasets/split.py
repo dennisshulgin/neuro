@@ -27,7 +27,7 @@ def train_test_split(
     if features_array.shape[0] < 2:
         raise ValueError("min two objects")
 
-    if test_ratio > 1 or test_ratio < 0:
+    if test_ratio <= 0 or test_ratio >= 1:
         raise ValueError("test ratio must be between 0 and 1")
 
     rng = np.random.default_rng(seed)

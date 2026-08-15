@@ -39,5 +39,6 @@ test_loss, test_accuracy = evaluate_binary_classifier(
     bias,
 )
 
-print(train_loss)
-print(test_loss)
+assert train_accuracy > 0.95
+assert test_accuracy > 0.90
+assert test_loss < loss_history[0]

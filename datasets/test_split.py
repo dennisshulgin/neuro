@@ -1,4 +1,4 @@
-from split import train_test_split
+from datasets.split import train_test_split
 import numpy as np
 
 features_arr = np.random.rand(500, 2)
